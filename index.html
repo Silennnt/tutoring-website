@@ -1872,7 +1872,25 @@
         margin-bottom: 20px;
       }
     }
+/* Wyrównanie i łamanie tekstu w nagłówku sekcji Hero */
+    .eyebrow-content {
+      display: inline-block;
+      text-align: center;
+      line-height: 1.5;
+    }
 
+    .mobile-break {
+      display: none;
+    }
+
+    @media (max-width: 600px) {
+      .mobile-break {
+        display: block; /* Wymusza przeniesienie tekstu do nowej linii */
+      }
+      .mobile-hide {
+        display: none; /* Ukrywa kropkę separującą na małych ekranach */
+      }
+    }
     /* PEŁNA NAPRAWA WYŚRODKOWANIA I SZEROKOŚCI POWYŻEJ 1024px */
     @media (min-width: 1024px) {
 
