@@ -1843,6 +1843,27 @@
     /* ============================================================
    RESPONSIVE TWEAKS
    ============================================================ */
+    /* Wymuszenie 3 kafelków statystyk w jednym rzędzie na najmniejszych ekranach */
+    @media (max-width: 500px) {
+      .stat-row {
+        grid-template-columns: repeat(3, 1fr) !important;
+        gap: 6px !important; /* Zmniejszenie odstępów między kafelkami */
+      }
+      
+      .stat-item {
+        padding: 10px 4px !important; /* Zmniejszenie marginesów wewnętrznych */
+      }
+      
+      .stat-num {
+        font-size: 1.05rem !important; /* Pomniejszenie głównej wartości liczbowej/tekstowej */
+      }
+      
+      .stat-lbl {
+        font-size: 0.55rem !important; /* Pomniejszenie etykiet */
+        line-height: 1.4 !important;
+        word-break: break-word !important; /* Wymuszenie przenoszenia najdłuższych słów do nowej linii */
+      }
+    }
     @media (max-width: 900px) {
       .hero-wrapper {
         flex-direction: column-reverse;
