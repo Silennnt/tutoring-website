@@ -2,157 +2,3017 @@
 <html lang="pl">
 
 <head>
-  <meta charset="UTF-8" />
-  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <meta property="og:image" content="https://silennnt.github.io/webb/images/bg.jpg"/>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-   <meta name="description" content="Korepetycje z matematyki w Radzionkowie. Pomoc w nauce, przygotowanie do matury, egzaminów i sprawdzianów. Korepetycje dla uczniów szkół podstawowych, średnich." />
-<meta name="keywords" content="korepetycje z matematyki Radzionków,korepetycje Radzionków, nauka matematyki, przygotowanie do matury z matematyki, pomoc w matematyce Radzionków, lekcje matematyki, korepetytor matematyka, Radzionków matematyka" />
-<meta name="author" content="Dawid Chrząszcz" />
-  <link href="https://cdn.jsdelivr.net/npm/remixicon@3.2.0/fonts/remixicon.css" rel="stylesheet" />
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css">
-  <link rel="stylesheet" href="styles.css" />
-  <script src="script.js" defer></script>
-  <title>Dawid Chrząszcz - Korepetycje Matematyka</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+  <title>DC Math – Korepetycje z Matematyki | Radzionków & Online</title>
+  <meta name="description"
+    content="Elitarne korepetycje z matematyki. Liceum, matura podstawowa i rozszerzona. Radzionków i online.">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=Space+Mono:wght@400;700&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap"
+    rel="stylesheet">
+
+  <style>
+    /* ============================================================
+   RESET & TOKENS
+   ============================================================ */
+    *,
+    *::before,
+    *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    :root {
+      --bg: #080c14;
+      --bg2: #0d1320;
+      --bg3: #111827;
+      --cyan: #00e5ff;
+      --cyan2: #00b4d8;
+      --violet: #a855f7;
+      --violet2: #7c3aed;
+      --pink: #f472b6;
+      --text: #e2e8f0;
+      --muted: #6b7280;
+      --border: rgba(0, 229, 255, .15);
+      --glass-bg: rgba(13, 19, 32, .7);
+      --glass-brd: rgba(0, 229, 255, .2);
+      --glow-c: 0 0 30px rgba(0, 229, 255, .3);
+      --glow-v: 0 0 30px rgba(168, 85, 247, .3);
+      --font-head: 'Syne', sans-serif;
+      --font-mono: 'Space Mono', monospace;
+      --font-body: 'DM Sans', sans-serif;
+      --r: 16px;
+      --r2: 24px;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: var(--font-body);
+      font-size: 16px;
+      line-height: 1.65;
+      overflow-x: hidden;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* ============================================================
+   SCROLLBAR
+   ============================================================ */
+    ::-webkit-scrollbar {
+      width: 4px;
+    }
+
+    ::-webkit-scrollbar-track {
+      background: var(--bg);
+    }
+
+    ::-webkit-scrollbar-thumb {
+      background: var(--cyan);
+      border-radius: 2px;
+    }
+
+    /* ============================================================
+   TYPOGRAPHY HELPERS
+   ============================================================ */
+    .font-head {
+      font-family: var(--font-head);
+    }
+
+    .font-mono {
+      font-family: var(--font-mono);
+    }
+
+    h1,
+    h2,
+    h3,
+    h4 {
+      font-family: var(--font-head);
+      line-height: 1.15;
+    }
+
+    .gradient-text {
+      background: linear-gradient(135deg, var(--cyan) 0%, var(--violet) 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .tag {
+      display: inline-block;
+      font-family: var(--font-mono);
+      font-size: .65rem;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      color: var(--cyan);
+      border: 1px solid var(--border);
+      border-radius: 100px;
+      padding: .3em .9em;
+      margin-bottom: 1.1rem;
+    }
+
+    /* ============================================================
+   LAYOUT
+   ============================================================ */
+    .container {
+      width: 100%;
+      max-width: 700px;
+      margin: 0 auto;
+      padding: 0 20px;
+      position: relative;
+      z-index: 10;
+    }
+
+    section {
+      padding: 80px 0;
+      position: relative;
+    }
+
+    /* ============================================================
+   NOISE OVERLAY
+   ============================================================ */
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.03'/%3E%3C/svg%3E");
+      background-size: 200px 200px;
+      pointer-events: none;
+      z-index: 9999;
+      opacity: .4;
+    }
+
+    /* ============================================================
+   GLOBAL FLOATING MATH BACKGROUND
+   ============================================================ */
+    #global-math-container {
+      position: fixed;
+      inset: 0;
+      z-index: 1;
+      pointer-events: none;
+      overflow: hidden;
+    }
+
+    .math-float {
+      position: absolute;
+      bottom: -10vh;
+      font-family: var(--font-mono);
+      color: var(--cyan);
+      pointer-events: none;
+      animation: float-up linear infinite;
+      user-select: none;
+      white-space: nowrap;
+      will-change: transform, opacity;
+    }
+
+    @keyframes float-up {
+      0% {
+        transform: translateY(0) rotate(-10deg);
+        opacity: 0;
+      }
+
+      5% {
+        opacity: var(--base-opacity);
+      }
+
+      95% {
+        opacity: var(--base-opacity);
+      }
+
+      100% {
+        transform: translateY(-120vh) rotate(10deg);
+        opacity: 0;
+      }
+    }
+
+    /* ============================================================
+   GRID BACKGROUND
+   ============================================================ */
+    .grid-bg {
+      position: absolute;
+      inset: 0;
+      background-image:
+        linear-gradient(rgba(0, 229, 255, .03) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(0, 229, 255, .03) 1px, transparent 1px);
+      background-size: 50px 50px;
+      pointer-events: none;
+    }
+
+    /* ============================================================
+   BOTTOM NAV
+   ============================================================ */
+    .bottom-nav {
+      position: fixed;
+      bottom: 16px;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 1000;
+      display: flex;
+      gap: 4px;
+      background: rgba(8, 12, 20, .85);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border: 1px solid var(--glass-brd);
+      border-radius: 100px;
+      padding: 8px 10px;
+      box-shadow: 0 8px 32px rgba(0, 0, 0, .6), var(--glow-c);
+    }
+
+    .bottom-nav a {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 3px;
+      padding: 8px 14px;
+      border-radius: 100px;
+      text-decoration: none;
+      color: var(--muted);
+      font-size: .55rem;
+      font-family: var(--font-mono);
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      transition: all .25s ease;
+      min-width: 52px;
+    }
+
+    .bottom-nav a svg {
+      width: 18px;
+      height: 18px;
+      transition: all .25s ease;
+    }
+
+    .bottom-nav a:hover,
+    .bottom-nav a.active {
+      color: var(--cyan);
+      background: rgba(0, 229, 255, .1);
+    }
+
+    .bottom-nav a:hover svg,
+    .bottom-nav a.active svg {
+      stroke: var(--cyan);
+    }
+
+    /* ============================================================
+   HERO
+   ============================================================ */
+    #hero {
+      min-height: 100svh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      overflow: hidden;
+      padding: 100px 0 120px;
+    }
+
+    .hero-canvas {
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      overflow: hidden;
+    }
+
+    .hero-glow-1 {
+      position: absolute;
+      width: 400px;
+      height: 400px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(0, 229, 255, .15) 0%, transparent 70%);
+      top: -100px;
+      right: -100px;
+      animation: pulse-glow 4s ease-in-out infinite;
+    }
+
+    .hero-glow-2 {
+      position: absolute;
+      width: 300px;
+      height: 300px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(168, 85, 247, .12) 0%, transparent 70%);
+      bottom: 0;
+      left: -80px;
+      animation: pulse-glow 5s ease-in-out infinite reverse;
+    }
+
+    @keyframes pulse-glow {
+
+      0%,
+      100% {
+        opacity: .7;
+        transform: scale(1);
+      }
+
+      50% {
+        opacity: 1;
+        transform: scale(1.1);
+      }
+    }
+
+    /* --- ZDJĘCIE PROFILOWE W HERO --- */
+    .hero-container {
+      max-width: 1100px;
+    }
+
+    .hero-wrapper {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 50px;
+      position: relative;
+      z-index: 2;
+    }
+
+    .hero-text-side {
+      flex: 1;
+      max-width: 580px;
+    }
+
+    .hero-image-side {
+      flex: 1;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      opacity: 0;
+      animation: fade-up 0.8s ease forwards 0.8s;
+      position: relative;
+    }
+
+    .profile-frame {
+      position: relative;
+      width: 100%;
+      max-width: 340px;
+      aspect-ratio: 4 / 5;
+      border-radius: 32px;
+      padding: 12px;
+      background: rgba(0, 229, 255, 0.05);
+      border: 1px solid rgba(0, 229, 255, 0.2);
+      box-shadow: 0 0 50px rgba(0, 229, 255, 0.15);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      z-index: 2;
+    }
+
+    .profile-frame img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      border-radius: 22px;
+      filter: contrast(110%);
+    }
+
+    .profile-decoration {
+      position: absolute;
+      inset: -15px;
+      border-radius: 42px;
+      border: 1px dashed rgba(168, 85, 247, 0.4);
+      z-index: -1;
+      animation: spin-slow 25s linear infinite;
+      pointer-events: none;
+    }
+
+    @keyframes spin-slow {
+      from {
+        transform: rotate(0deg);
+      }
+
+      to {
+        transform: rotate(360deg);
+      }
+    }
+
+    .hero-eyebrow {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 1.5rem;
+      opacity: 0;
+      animation: fade-up .8s ease forwards .3s;
+    }
+
+    .hero-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: var(--cyan);
+      box-shadow: 0 0 12px var(--cyan);
+      animation: blink 1.5s ease-in-out infinite;
+    }
+
+    @keyframes blink {
+
+      0%,
+      100% {
+        opacity: 1;
+      }
+
+      50% {
+        opacity: .3;
+      }
+    }
+
+    .hero-eyebrow span {
+      font-family: var(--font-mono);
+      font-size: .7rem;
+      letter-spacing: .15em;
+      text-transform: uppercase;
+      color: var(--cyan);
+    }
+
+    .hero-h1 {
+      font-size: clamp(2rem, 6vw, 4.2rem);
+      font-weight: 800;
+      line-height: 1.2;
+      margin-bottom: 1.5rem;
+      opacity: 0;
+      animation: fade-up .8s ease forwards .5s;
+      word-break: break-word;
+    }
+
+    .hero-h1 .line2 {
+      display: inline-block;
+      background: linear-gradient(135deg, var(--cyan), var(--violet));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      padding-bottom: 8px;
+      padding-right: 8px;
+    }
+
+    .hero-sub {
+      font-size: 1.05rem;
+      color: #94a3b8;
+      max-width: 480px;
+      margin-bottom: 2.5rem;
+      font-weight: 300;
+      line-height: 1.75;
+      opacity: 0;
+      animation: fade-up .8s ease forwards .7s;
+    }
+
+    .hero-ctas {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      opacity: 0;
+      animation: fade-up .8s ease forwards .9s;
+    }
+
+    /* ============================================================
+   BUTTONS
+   ============================================================ */
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      min-height: 52px;
+      padding: 0 28px;
+      border-radius: 100px;
+      font-family: var(--font-head);
+      font-size: .9rem;
+      font-weight: 700;
+      letter-spacing: .04em;
+      text-decoration: none;
+      cursor: pointer;
+      border: none;
+      transition: all .25s ease;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .btn-primary {
+      background: linear-gradient(135deg, var(--cyan), var(--cyan2));
+      color: var(--bg);
+      box-shadow: 0 0 0 0 rgba(0, 229, 255, 0);
+    }
+
+    .btn-primary:hover {
+      box-shadow: 0 0 30px rgba(0, 229, 255, .5), 0 0 60px rgba(0, 229, 255, .2);
+      transform: translateY(-2px);
+    }
+
+    .btn-primary:active {
+      transform: scale(.97);
+    }
+
+    .btn-ghost {
+      background: transparent;
+      color: var(--text);
+      border: 1px solid rgba(255, 255, 255, .15);
+    }
+
+    .btn-ghost:hover {
+      border-color: var(--cyan);
+      color: var(--cyan);
+      box-shadow: 0 0 15px rgba(0, 229, 255, .15);
+    }
+
+    .btn-violet {
+      background: linear-gradient(135deg, var(--violet), var(--violet2));
+      color: #fff;
+    }
+
+    .btn-violet:hover {
+      box-shadow: 0 0 30px rgba(168, 85, 247, .5);
+      transform: translateY(-2px);
+    }
+
+    .btn svg {
+      flex-shrink: 0;
+    }
+
+    /* ============================================================
+   SECTION HEADERS
+   ============================================================ */
+    .section-header {
+      margin-bottom: 3rem;
+    }
+
+    .section-header h2 {
+      font-size: clamp(1.9rem, 6vw, 3rem);
+      font-weight: 800;
+      margin-bottom: .75rem;
+    }
+
+    /* ============================================================
+   ABOUT
+   ============================================================ */
+    #about {
+      background: var(--bg2);
+      overflow: hidden;
+    }
+
+    .about-card {
+      background: var(--glass-bg);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border: 1px solid var(--glass-brd);
+      border-radius: var(--r2);
+      padding: 28px 24px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .about-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 2px;
+      background: linear-gradient(90deg, transparent, var(--cyan), transparent);
+    }
+
+    .avatar-wrap {
+      width: 90px;
+      height: 90px;
+      border-radius: 50%;
+      overflow: hidden;
+      border: 2px solid var(--cyan);
+      box-shadow: 0 0 20px rgba(0, 229, 255, .3);
+      background: linear-gradient(135deg, var(--bg3), var(--bg2));
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 2.2rem;
+      margin-bottom: 1.2rem;
+    }
+
+    .stat-row {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 12px;
+      margin-top: 1.5rem;
+    }
+
+    .stat-item {
+      text-align: center;
+      padding: 14px 8px;
+      background: rgba(0, 229, 255, .05);
+      border: 1px solid var(--border);
+      border-radius: var(--r);
+    }
+
+    .stat-num {
+      font-family: var(--font-mono);
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: var(--cyan);
+      display: block;
+    }
+
+    .stat-lbl {
+      font-size: .7rem;
+      color: var(--muted);
+      text-transform: uppercase;
+      letter-spacing: .08em;
+    }
+
+    .badge-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 1.2rem;
+    }
+
+    .badge {
+      font-size: .72rem;
+      font-family: var(--font-mono);
+      padding: .3em .8em;
+      border-radius: 100px;
+      border: 1px solid;
+    }
+
+    .badge-cyan {
+      border-color: rgba(0, 229, 255, .4);
+      color: var(--cyan);
+      background: rgba(0, 229, 255, .08);
+    }
+
+    .badge-violet {
+      border-color: rgba(168, 85, 247, .4);
+      color: var(--violet);
+      background: rgba(168, 85, 247, .08);
+    }
+
+    .badge-pink {
+      border-color: rgba(244, 114, 182, .4);
+      color: var(--pink);
+      background: rgba(244, 114, 182, .08);
+    }
+
+    /* ============================================================
+   OFFER – TIMELINE / PROCESS
+   ============================================================ */
+    #offer {
+      background: var(--bg);
+      overflow: hidden;
+    }
+
+    .offer-glow {
+      position: absolute;
+      width: 600px;
+      height: 600px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(0, 229, 255, .06) 0%, transparent 65%);
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      pointer-events: none;
+    }
+
+    /* --- MODE TOGGLE --- */
+    .mode-toggle {
+      display: flex;
+      background: rgba(255, 255, 255, .04);
+      border: 1px solid rgba(255, 255, 255, .1);
+      border-radius: 100px;
+      padding: 4px;
+      margin-bottom: 2.5rem;
+      position: relative;
+    }
+
+    .mode-toggle-pill {
+      position: absolute;
+      top: 4px;
+      left: 4px;
+      height: calc(100% - 8px);
+      background: linear-gradient(135deg, var(--cyan), var(--cyan2));
+      border-radius: 100px;
+      transition: transform .3s cubic-bezier(.34, 1.56, .64, 1), width .3s ease;
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    .mode-btn {
+      flex: 1;
+      padding: 10px 16px;
+      border: none;
+      background: transparent;
+      color: var(--muted);
+      font-family: var(--font-head);
+      font-size: .82rem;
+      font-weight: 700;
+      letter-spacing: .05em;
+      cursor: pointer;
+      border-radius: 100px;
+      position: relative;
+      z-index: 1;
+      transition: color .25s;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 7px;
+    }
+
+    .mode-btn.active {
+      color: var(--bg);
+    }
+
+    .mode-btn svg {
+      width: 16px;
+      height: 16px;
+      flex-shrink: 0;
+    }
+
+    /* --- PANELS --- */
+    .mode-panels {
+      display: grid;
+      align-items: start;
+      transition: height 0.5s cubic-bezier(0.22, 1, 0.36, 1);
+      /* Zapewnia płynną zmianę rozmiaru kontenera */
+      overflow: hidden;
+      /* Zapobiega wychodzeniu elementów podczas animacji */
+    }
+
+    .mode-panel {
+      grid-area: 1 / 1;
+      /* Nakłada wszystkie panele na siebie w tej samej komórce siatki */
+      opacity: 0;
+      visibility: hidden;
+      pointer-events: none;
+      /* Zapobiega klikaniu w niewidoczny panel */
+      transform: translateY(15px);
+      /* Delikatne przesunięcie w dół dla efektu wjazdu */
+      transition: opacity 0.5s ease, transform 0.5s ease, visibility 0.5s;
+    }
+
+    .mode-panel.active {
+      opacity: 1;
+      visibility: visible;
+      pointer-events: auto;
+      transform: translateY(0);
+      z-index: 2;
+      /* Przenosi aktywny panel na wierzch */
+    }
+
+    /* --- PROCESS STEPS --- */
+    .process-steps {
+      position: relative;
+      padding-left: 28px;
+    }
+
+    .process-line {
+      position: absolute;
+      left: 10px;
+      top: 16px;
+      bottom: 16px;
+      width: 2px;
+      background: linear-gradient(to bottom, var(--cyan), var(--violet), transparent);
+      border-radius: 1px;
+    }
+
+    .process-line-fill {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 0%;
+      background: linear-gradient(to bottom, var(--cyan), var(--violet));
+      border-radius: 1px;
+      transition: height .1s linear;
+    }
+
+    .step-item {
+      position: relative;
+      margin-bottom: 0;
+      padding: 0 0 28px 20px;
+    }
+
+    .step-item:last-child {
+      padding-bottom: 0;
+    }
+
+    .step-dot {
+      position: absolute;
+      left: -24px;
+      top: 14px;
+      width: 20px;
+      height: 20px;
+      border-radius: 50%;
+      background: var(--bg);
+      border: 2px solid rgba(255, 255, 255, .15);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: border-color .4s, box-shadow .4s;
+      z-index: 1;
+    }
+
+    .step-dot-inner {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: var(--muted);
+      transition: background .4s, transform .4s;
+    }
+
+    .step-item.in-view .step-dot {
+      border-color: var(--cyan);
+      box-shadow: 0 0 14px rgba(0, 229, 255, .5);
+    }
+
+    .step-item.in-view .step-dot-inner {
+      background: var(--cyan);
+      transform: scale(1.2);
+    }
+
+    .step-card {
+      background: var(--glass-bg);
+      border: 1px solid rgba(255, 255, 255, .07);
+      border-radius: var(--r2);
+      padding: 20px 20px;
+      overflow: hidden;
+      position: relative;
+      transition: border-color .4s, transform .6s cubic-bezier(.22, 1, .36, 1), opacity .6s ease;
+      transform: translateX(40px);
+      opacity: 0;
+    }
+
+    .step-item.in-view .step-card {
+      transform: translateX(0);
+      opacity: 1;
+      border-color: rgba(0, 229, 255, .18);
+    }
+
+    .step-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, var(--cyan), transparent);
+      opacity: 0;
+      transition: opacity .4s;
+    }
+
+    .step-item.in-view .step-card::before {
+      opacity: 1;
+    }
+
+    .step-num {
+      font-family: var(--font-mono);
+      font-size: .6rem;
+      letter-spacing: .15em;
+      color: var(--cyan);
+      margin-bottom: .4rem;
+      display: block;
+    }
+
+    .step-card h3 {
+      font-size: 1.1rem;
+      font-weight: 700;
+      margin-bottom: .45rem;
+      color: #fff;
+    }
+
+    .step-card p {
+      font-size: .84rem;
+      color: #94a3b8;
+      line-height: 1.7;
+      margin-bottom: .8rem;
+    }
+
+    .step-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+    }
+
+    .step-tag {
+      font-size: .68rem;
+      font-family: var(--font-mono);
+      padding: .25em .7em;
+      border-radius: 100px;
+      background: rgba(0, 229, 255, .08);
+      border: 1px solid rgba(0, 229, 255, .2);
+      color: var(--cyan);
+    }
+
+    .step-tag.violet {
+      background: rgba(168, 85, 247, .08);
+      border-color: rgba(168, 85, 247, .2);
+      color: var(--violet);
+    }
+
+    /* --- MODE CARDS --- */
+    .mode-detail {
+      display: grid;
+      gap: 14px;
+    }
+
+    .mode-detail-card {
+      background: var(--glass-bg);
+      border: 1px solid var(--glass-brd);
+      border-radius: var(--r2);
+      padding: 22px 20px;
+      position: relative;
+      overflow: hidden;
+      opacity: 0;
+      transform: translateY(24px);
+      transition: opacity .5s ease, transform .5s cubic-bezier(.22, 1, .36, 1), border-color .3s;
+    }
+
+    .mode-detail-card.in-view {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .mode-detail-card:hover {
+      border-color: rgba(0, 229, 255, .35);
+    }
+
+    .mdc-header {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      margin-bottom: 1rem;
+    }
+
+    .mdc-icon {
+      width: 46px;
+      height: 46px;
+      border-radius: 14px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.3rem;
+      flex-shrink: 0;
+    }
+
+    .mdc-icon.c {
+      background: rgba(0, 229, 255, .1);
+      border: 1px solid rgba(0, 229, 255, .25);
+    }
+
+    .mdc-icon.v {
+      background: rgba(168, 85, 247, .1);
+      border: 1px solid rgba(168, 85, 247, .25);
+    }
+
+    .mdc-title {
+      font-size: 1rem;
+      font-weight: 700;
+      color: #fff;
+    }
+
+    .mdc-sub {
+      font-size: .75rem;
+      color: var(--muted);
+      font-family: var(--font-mono);
+      margin-top: 2px;
+    }
+
+    .feature-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 8px;
+      margin-top: .6rem;
+    }
+
+    .feat {
+      display: flex;
+      align-items: flex-start;
+      gap: 7px;
+      font-size: .79rem;
+      color: #cbd5e1;
+      line-height: 1.5;
+    }
+
+    .feat-dot {
+      width: 5px;
+      height: 5px;
+      border-radius: 50%;
+      margin-top: 5px;
+      flex-shrink: 0;
+    }
+
+    .feat-dot.c {
+      background: var(--cyan);
+    }
+
+    .feat-dot.v {
+      background: var(--violet);
+    }
+
+    .location-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: .75rem;
+      font-family: var(--font-mono);
+      color: var(--violet);
+      background: rgba(168, 85, 247, .08);
+      border: 1px solid rgba(168, 85, 247, .2);
+      border-radius: 100px;
+      padding: .3em .8em;
+      margin-top: .8rem;
+    }
+
+    .compare-row {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 18px 20px;
+      background: rgba(0, 229, 255, .04);
+      border: 1px solid rgba(0, 229, 255, .12);
+      border-radius: 16px;
+      margin-top: 6px;
+    }
+
+    .compare-row svg {
+      flex-shrink: 0;
+    }
+
+    .compare-row p {
+      font-size: .82rem;
+      color: #94a3b8;
+      line-height: 1.6;
+    }
+
+    .price-wrapper {
+      display: flex;
+      flex-direction: column;
+      margin-bottom: 1.4rem;
+    }
+
+    .price-old {
+      font-family: var(--font-mono);
+      font-size: 1rem;
+      color: var(--muted);
+      text-decoration: line-through;
+      opacity: 0.6;
+      margin-bottom: -5px;
+      /* Przyciąga nową cenę wyżej */
+    }
+
+    .promo-badge {
+      display: inline-block;
+      background: rgba(0, 229, 255, 0.1);
+      color: var(--cyan);
+      border: 1px solid var(--border);
+      font-family: var(--font-mono);
+      font-size: 0.65rem;
+      padding: 2px 8px;
+      border-radius: 4px;
+      margin-top: 10px;
+      font-weight: 700;
+    }
+
+    /* ============================================================
+   MATERIALS
+   ============================================================ */
+    #materials {
+      background: var(--bg2);
+      overflow: hidden;
+    }
+
+    .materials-glow {
+      position: absolute;
+      width: 500px;
+      height: 500px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(168, 85, 247, .1) 0%, transparent 65%);
+      top: -150px;
+      right: -150px;
+      pointer-events: none;
+    }
+
+    .material-card {
+      background: linear-gradient(135deg, rgba(168, 85, 247, .12), rgba(0, 229, 255, .08));
+      border: 1px solid rgba(168, 85, 247, .3);
+      border-radius: var(--r2);
+      padding: 32px 24px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .material-card::after {
+      content: '';
+      position: absolute;
+      top: -50%;
+      right: -30%;
+      width: 60%;
+      height: 200%;
+      background: linear-gradient(135deg, rgba(255, 255, 255, .03), transparent);
+      transform: rotate(-15deg);
+      pointer-events: none;
+    }
+
+    .material-card h3 {
+      font-size: 1.3rem;
+      font-weight: 700;
+      margin-bottom: .5rem;
+    }
+
+    .material-card p {
+      font-size: .9rem;
+      color: #94a3b8;
+      margin-bottom: 1.5rem;
+      line-height: 1.7;
+    }
+
+    .pdf-preview {
+      background: rgba(0, 0, 0, .3);
+      border: 1px solid rgba(255, 255, 255, .08);
+      border-radius: 12px;
+      padding: 16px;
+      margin-bottom: 1.5rem;
+      display: flex;
+      align-items: center;
+      gap: 14px;
+    }
+
+    .pdf-icon {
+      width: 44px;
+      height: 44px;
+      border-radius: 10px;
+      background: linear-gradient(135deg, #ef4444, #dc2626);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      font-size: 1.1rem;
+    }
+
+    .pdf-meta strong {
+      display: block;
+      font-size: .88rem;
+      margin-bottom: 2px;
+    }
+
+    .pdf-meta span {
+      font-size: .75rem;
+      color: var(--muted);
+      font-family: var(--font-mono);
+    }
+
+    /* ============================================================
+   PRICING
+   ============================================================ */
+    #pricing {
+      background: var(--bg);
+      overflow: hidden;
+    }
+
+    .pricing-cards {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    .price-card {
+      background: var(--glass-bg);
+      border: 1px solid var(--glass-brd);
+      border-radius: var(--r2);
+      padding: 28px 24px;
+      position: relative;
+      overflow: hidden;
+      transition: border-color .25s, box-shadow .25s;
+    }
+
+    .price-card:hover {
+      border-color: rgba(0, 229, 255, .4);
+      box-shadow: 0 0 25px rgba(0, 229, 255, .1);
+    }
+
+    .price-card.featured {
+      border-color: rgba(0, 229, 255, .5);
+      background: linear-gradient(135deg, rgba(0, 229, 255, .07), rgba(168, 85, 247, .05));
+      box-shadow: 0 0 40px rgba(0, 229, 255, .1);
+    }
+
+    .price-card.featured::before {
+      content: 'NAJPOPULARNIEJSZY';
+      position: absolute;
+      top: 0;
+      right: 0;
+      background: linear-gradient(135deg, var(--cyan), var(--violet));
+      color: var(--bg);
+      font-family: var(--font-mono);
+      font-size: .55rem;
+      letter-spacing: .12em;
+      padding: .4em 1em;
+      border-radius: 0 var(--r2) 0 12px;
+      font-weight: 700;
+    }
+
+    .price-tier {
+      font-family: var(--font-mono);
+      font-size: .65rem;
+      letter-spacing: .14em;
+      text-transform: uppercase;
+      color: var(--cyan);
+      margin-bottom: .6rem;
+    }
+
+    .price-card h3 {
+      font-size: 1.2rem;
+      font-weight: 700;
+      margin-bottom: .5rem;
+    }
+
+    .price-card .desc {
+      font-size: .85rem;
+      color: #94a3b8;
+      margin-bottom: 1.4rem;
+      line-height: 1.65;
+    }
+
+    .price-amount {
+      display: flex;
+      align-items: flex-end;
+      gap: 4px;
+      margin-bottom: 1.4rem;
+    }
+
+    .price-big {
+      font-family: var(--font-mono);
+      font-size: 2.6rem;
+      font-weight: 700;
+      color: var(--cyan);
+      line-height: 1;
+    }
+
+    .price-small {
+      font-size: .78rem;
+      color: var(--muted);
+      padding-bottom: .3rem;
+    }
+
+    .price-features {
+      list-style: none;
+    }
+
+    .price-features li {
+      font-size: .84rem;
+      padding: 7px 0;
+      border-bottom: 1px solid rgba(255, 255, 255, .05);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      color: #cbd5e1;
+    }
+
+    .price-features li:last-child {
+      border-bottom: none;
+    }
+
+    .check {
+      color: var(--cyan);
+      font-size: 1rem;
+      flex-shrink: 0;
+    }
+
+    /* ============================================================
+   CONTACT
+   ============================================================ */
+    #contact {
+      background: var(--bg2);
+      overflow: hidden;
+    }
+
+    .contact-card {
+      background: var(--glass-bg);
+      border: 1px solid var(--glass-brd);
+      border-radius: var(--r2);
+      overflow: hidden;
+    }
+
+    .contact-header {
+      padding: 28px 24px 20px;
+      border-bottom: 1px solid rgba(255, 255, 255, .06);
+    }
+
+    .contact-header h3 {
+      font-size: 1.3rem;
+      font-weight: 700;
+      margin-bottom: .4rem;
+    }
+
+    .contact-header p {
+      font-size: .88rem;
+      color: #94a3b8;
+    }
+
+    .contact-actions {
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+    }
+
+    .contact-btn {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      padding: 18px 24px;
+      text-decoration: none;
+      color: var(--text);
+      border-bottom: 1px solid rgba(255, 255, 255, .05);
+      transition: background .2s, color .2s;
+      cursor: pointer;
+      border: none;
+      background: transparent;
+      width: 100%;
+      text-align: left;
+      font-size: .95rem;
+      font-family: var(--font-body);
+    }
+
+    .contact-btn:last-child {
+      border-bottom: none;
+    }
+
+    .contact-btn:hover,
+    .contact-btn:active {
+      background: rgba(0, 229, 255, .06);
+      color: var(--cyan);
+    }
+
+    .contact-btn-icon {
+      width: 44px;
+      height: 44px;
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+
+    .ci-green {
+      background: rgba(34, 197, 94, .12);
+      border: 1px solid rgba(34, 197, 94, .3);
+    }
+
+    .ci-cyan {
+      background: rgba(0, 229, 255, .1);
+      border: 1px solid rgba(0, 229, 255, .3);
+    }
+
+    .ci-orange {
+      background: rgba(251, 146, 60, .1);
+      border: 1px solid rgba(251, 146, 60, .3);
+    }
+
+    .contact-btn-meta {
+      flex: 1;
+    }
+
+    .contact-btn-meta strong {
+      display: block;
+      font-weight: 600;
+      font-size: .92rem;
+      margin-bottom: 2px;
+    }
+
+    .contact-btn-meta span {
+      font-size: .75rem;
+      color: var(--muted);
+      font-family: var(--font-mono);
+    }
+
+    .contact-btn-arrow {
+      color: var(--muted);
+      transition: transform .2s, color .2s;
+    }
+
+    .contact-btn:hover .contact-btn-arrow {
+      transform: translateX(4px);
+      color: var(--cyan);
+    }
+
+    .info-row {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: .82rem;
+      color: var(--muted);
+      padding: 16px 24px;
+      background: rgba(0, 0, 0, .2);
+    }
+
+    .info-row svg {
+      flex-shrink: 0;
+    }
+
+    /* ============================================================
+   FOOTER
+   ============================================================ */
+    footer {
+      background: var(--bg);
+      border-top: 1px solid rgba(255, 255, 255, .06);
+      padding: 32px 20px 100px;
+      text-align: center;
+      position: relative;
+      z-index: 10;
+    }
+
+    footer .logo-f {
+      font-family: var(--font-mono);
+      font-size: 1.1rem;
+      font-weight: 700;
+      margin-bottom: .5rem;
+    }
+
+    footer p {
+      font-size: .78rem;
+      color: var(--muted);
+    }
+
+    /* ============================================================
+   SCROLL REVEAL
+   ============================================================ */
+    .reveal {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: opacity .7s ease, transform .7s ease;
+    }
+
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* ============================================================
+   HERO SCROLL INDICATOR
+   ============================================================ */
+    .scroll-indicator {
+      position: absolute;
+      bottom: 36px;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 8px;
+      animation: fade-up .8s ease forwards 1.5s, bob 2s ease-in-out infinite 2.3s;
+      opacity: 0;
+    }
+
+    .scroll-indicator span {
+      font-family: var(--font-mono);
+      font-size: .58rem;
+      letter-spacing: .15em;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+
+    .scroll-mouse {
+      width: 22px;
+      height: 34px;
+      border: 1.5px solid rgba(255, 255, 255, .2);
+      border-radius: 11px;
+      display: flex;
+      justify-content: center;
+      padding-top: 5px;
+    }
+
+    .scroll-mouse-dot {
+      width: 3px;
+      height: 6px;
+      background: var(--cyan);
+      border-radius: 2px;
+      animation: scroll-dot 1.8s ease-in-out infinite;
+    }
+
+    @keyframes scroll-dot {
+      0% {
+        transform: translateY(0);
+        opacity: 1;
+      }
+
+      80% {
+        transform: translateY(8px);
+        opacity: 0;
+      }
+
+      100% {
+        transform: translateY(0);
+        opacity: 0;
+      }
+    }
+
+    @keyframes bob {
+
+      0%,
+      100% {
+        transform: translateX(-50%) translateY(0);
+      }
+
+      50% {
+        transform: translateX(-50%) translateY(5px);
+      }
+    }
+
+    /* ============================================================
+   KEYFRAMES
+   ============================================================ */
+    @keyframes fade-up {
+      from {
+        opacity: 0;
+        transform: translateY(24px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    /* ============================================================
+   3D SHAPES (CSS) - Z-INDEX 5
+   ============================================================ */
+    .scene-3d,
+    .scene-3d-2,
+    .scene-3d-3,
+    .scene-3d-4,
+    .scene-3d-5,
+    .scene-3d-6,
+    .scene-3d-7,
+    .scene-3d-8 {
+      z-index: 5;
+    }
+
+    .scene-3d {
+      position: absolute;
+      top: 15%;
+      right: 5%;
+      width: 200px;
+      height: 200px;
+      perspective: 600px;
+      pointer-events: none;
+    }
+
+    .cube {
+      width: 100%;
+      height: 100%;
+      position: relative;
+      transform-style: preserve-3d;
+      animation: rotate-cube 12s linear infinite;
+    }
+
+    @keyframes rotate-cube {
+      from {
+        transform: rotateX(20deg) rotateY(0deg);
+      }
+
+      to {
+        transform: rotateX(20deg) rotateY(360deg);
+      }
+    }
+
+    .cube-face {
+      position: absolute;
+      width: 80px;
+      height: 80px;
+      left: 50%;
+      top: 50%;
+      margin: -40px 0 0 -40px;
+      border: 1.5px solid rgba(0, 229, 255, .3);
+      background: rgba(0, 229, 255, .04);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: var(--font-mono);
+      font-size: 1.2rem;
+      color: rgba(0, 229, 255, .4);
+      backdrop-filter: blur(4px);
+    }
+
+    .cf-front {
+      transform: translateZ(40px);
+    }
+
+    .cf-back {
+      transform: rotateY(180deg) translateZ(40px);
+    }
+
+    .cf-right {
+      transform: rotateY(90deg) translateZ(40px);
+    }
+
+    .cf-left {
+      transform: rotateY(-90deg) translateZ(40px);
+    }
+
+    .cf-top {
+      transform: rotateX(90deg) translateZ(40px);
+    }
+
+    .cf-bottom {
+      transform: rotateX(-90deg) translateZ(40px);
+    }
+
+    .scene-3d-2 {
+      position: absolute;
+      bottom: 15%;
+      left: 5%;
+      width: 120px;
+      height: 120px;
+      perspective: 400px;
+      pointer-events: none;
+    }
+
+    .tri-spin {
+      width: 100%;
+      height: 100%;
+      transform-style: preserve-3d;
+      animation: rotate-tri 8s linear infinite reverse;
+    }
+
+    @keyframes rotate-tri {
+      from {
+        transform: rotateX(35deg) rotateY(0);
+      }
+
+      to {
+        transform: rotateX(35deg) rotateY(360deg);
+      }
+    }
+
+    .tri-face {
+      position: absolute;
+      width: 60px;
+      height: 60px;
+      left: 50%;
+      top: 50%;
+      margin: -30px 0 0 -30px;
+      border: 1.5px solid rgba(168, 85, 247, .35);
+      background: rgba(168, 85, 247, .04);
+      font-family: var(--font-mono);
+      font-size: 1rem;
+      color: rgba(168, 85, 247, .4);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .tf1 {
+      transform: rotateY(0deg) translateZ(30px);
+    }
+
+    .tf2 {
+      transform: rotateY(90deg) translateZ(30px);
+    }
+
+    .tf3 {
+      transform: rotateY(180deg) translateZ(30px);
+    }
+
+    .tf4 {
+      transform: rotateY(270deg) translateZ(30px);
+    }
+
+    .tf5 {
+      transform: rotateX(90deg) translateZ(30px);
+    }
+
+    .tf6 {
+      transform: rotateX(-90deg) translateZ(30px);
+    }
+
+    .scene-3d-3 {
+      position: absolute;
+      top: 10%;
+      right: -50px;
+      width: 150px;
+      height: 150px;
+      perspective: 600px;
+      pointer-events: none;
+      opacity: 0.5;
+    }
+
+    .scene-3d-4 {
+      position: absolute;
+      bottom: 15%;
+      left: -40px;
+      width: 130px;
+      height: 130px;
+      perspective: 500px;
+      pointer-events: none;
+      opacity: 0.4;
+    }
+
+    .scene-3d-5 {
+      position: absolute;
+      top: 50%;
+      right: -30px;
+      transform: translateY(-50%);
+      width: 160px;
+      height: 160px;
+      perspective: 700px;
+      pointer-events: none;
+      opacity: 0.6;
+    }
+
+    .scene-3d-6 {
+      position: absolute;
+      top: 20%;
+      left: -60px;
+      width: 140px;
+      height: 140px;
+      perspective: 600px;
+      pointer-events: none;
+      opacity: 0.45;
+    }
+
+    .scene-3d-7 {
+      position: absolute;
+      bottom: 10%;
+      right: -60px;
+      width: 180px;
+      height: 180px;
+      perspective: 800px;
+      pointer-events: none;
+      opacity: 0.4;
+    }
+
+    .scene-3d-8 {
+      position: absolute;
+      top: 30%;
+      left: -20px;
+      width: 110px;
+      height: 110px;
+      perspective: 500px;
+      pointer-events: none;
+      opacity: 0.5;
+    }
+
+    /* ============================================================
+   DOWNLOAD ANIMATION
+   ============================================================ */
+    @keyframes download-pulse {
+
+      0%,
+      100% {
+        transform: scale(1);
+      }
+
+      50% {
+        transform: scale(.95);
+      }
+    }
+
+    .downloading {
+      animation: download-pulse .3s ease 3;
+    }
+
+    /* ============================================================
+   SCROLL-DRIVEN ANIMATIONS — per-section
+   ============================================================ */
+    #about .about-card {
+      transition: opacity .7s ease, transform .7s cubic-bezier(.22, 1, .36, 1);
+    }
+
+    #about .stat-item {
+      opacity: 0;
+      transform: translateY(20px) scale(.95);
+      transition: opacity .5s ease, transform .5s cubic-bezier(.22, 1, .36, 1);
+    }
+
+    #about .stat-item.vis {
+      opacity: 1;
+      transform: translateY(0) scale(1);
+    }
+
+    #about .badge {
+      opacity: 0;
+      transform: scale(.8) translateY(8px);
+      transition: opacity .4s ease, transform .4s cubic-bezier(.34, 1.56, .64, 1);
+    }
+
+    #about .badge.vis {
+      opacity: 1;
+      transform: scale(1) translateY(0);
+    }
+
+    .price-card {
+      transition: opacity .65s ease, transform .65s cubic-bezier(.22, 1, .36, 1);
+    }
+
+    .material-card {
+      transition: opacity .7s ease, transform .7s cubic-bezier(.22, 1, .36, 1);
+    }
+
+    @keyframes shimmer-sweep {
+      from {
+        transform: translateX(-100%) rotate(-15deg);
+      }
+
+      to {
+        transform: translateX(300%) rotate(-15deg);
+      }
+    }
+
+    .material-card.shimmer::after {
+      animation: shimmer-sweep .9s ease forwards;
+    }
+
+    .section-header .word {
+      display: inline-block;
+      opacity: 0;
+      transform: translateY(20px) rotateX(-30deg);
+      transform-origin: top center;
+      transition: opacity .5s ease, transform .5s cubic-bezier(.22, 1, .36, 1);
+    }
+
+    .section-header.visible .word {
+      opacity: 1;
+      transform: translateY(0) rotateX(0);
+    }
+
+    .contact-btn {
+      opacity: 0;
+      transform: translateX(-20px);
+      transition: opacity .45s ease, transform .45s cubic-bezier(.22, 1, .36, 1), background .2s, color .2s;
+    }
+
+    .contact-btn.vis {
+      opacity: 1;
+      transform: translateX(0);
+    }
+
+    /* ============================================================
+   RESPONSIVE TWEAKS
+   ============================================================ */
+    @media (max-width: 900px) {
+      .hero-wrapper {
+        flex-direction: column-reverse;
+        text-align: center;
+        margin-top: 20px;
+      }
+
+      .hero-text-side {
+        max-width: 100%;
+      }
+
+      .hero-eyebrow {
+        justify-content: center;
+      }
+
+      .hero-ctas {
+        justify-content: center;
+      }
+
+      .hero-sub {
+        margin-left: auto;
+        margin-right: auto;
+      }
+
+      .profile-frame {
+        max-width: 260px;
+        margin-bottom: 20px;
+      }
+    }
+
+    /* PEŁNA NAPRAWA WYŚRODKOWANIA I SZEROKOŚCI POWYŻEJ 1024px */
+    @media (min-width: 1024px) {
+
+      /* 1. Resetujemy sekcję, żeby nie ograniczała dzieci */
+      #pricing {
+        display: block !important;
+        width: 100% !important;
+        padding: 80px 0 !important;
+      }
+
+      /* 2. Nagłówek (tytuł) - zostawiamy go w standardowym kontenerze, 
+         ale upewniamy się, że nie centruje wszystkiego poniżej */
+      #pricing .container {
+        max-width: 1200px !important;
+        margin: 0 auto 3rem auto !important;
+        /* Środkuje tylko blok tekstu */
+        text-align: left !important;
+      }
+
+      /* 3. KARTY - Wymuszamy wyjście poza standardowy kontener, jeśli trzeba */
+      .pricing-cards {
+        display: grid !important;
+        grid-template-columns: repeat(3, 1fr) !important;
+        gap: 30px !important;
+
+        /* Klucz do sukcesu: */
+        width: 95% !important;
+        max-width: 1300px !important;
+        /* Tutaj ustawiasz jak szerokie mają być karty */
+        margin: 0 auto !important;
+        /* TO MUSI WYŚRODKOWAĆ CAŁY BLOK KART */
+
+        padding: 0 !important;
+        justify-content: center !important;
+      }
+
+      /* 4. Same karty */
+      .price-card {
+        width: 100% !important;
+        min-width: auto !important;
+      }
+
+      /* 5. Naprawa ostatniej karty */
+      .pricing-cards .price-card:last-child {
+        grid-column: auto !important;
+        max-width: none !important;
+      }
+    }
+
+    /* Widok dla tabletów - 2 karty w rzędzie, trzecia pod spodem szeroka */
+    @media (min-width: 768px) and (max-width: 1023px) {
+      .pricing-cards {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 20px;
+        max-width: 900px;
+      }
+
+      .pricing-cards .price-card:last-child {
+        grid-column: span 2;
+        max-width: 450px;
+        margin: 0 auto;
+      }
+    }
+
+    .mode-detail {
+      grid-template-columns: 1fr 1fr;
+    }
+
+    .mode-detail .compare-row {
+      grid-column: span 2;
+    }
+
+
+    @media (max-width: 420px) {
+      .hero-h1 {
+        font-size: 2.1rem;
+      }
+
+      .hero-ctas {
+        flex-direction: column;
+      }
+
+      .hero-ctas .btn {
+        width: 100%;
+      }
+    }
+
+    /* Wymuszenie układu pionowego dla sekcji trybu pracy na ekranach mobilnych */
+    @media (max-width: 900px) {
+      .mode-detail {
+        grid-template-columns: 1fr !important;
+        gap: 24px !important;
+      }
+
+      .mode-detail .compare-row {
+        grid-column: 1 / -1 !important;
+      }
+    }
+  </style>
 </head>
 
-<body onselectstart="return false" onselect="return false" oncopy="return false" ondrag="return false">
-  <canvas id="snow-canvas"></canvas>
+<body>
 
-  <nav>
-    <div class="nav__content">
-      <a href="#">
-        <div class="text-shadow">Dawid</div>
-      </a>
-      <label for="check" class="checkbox">
-        <i class="ri-menu-line"></i>
-      </label>
-      <input type="checkbox" name="check" id="check" />
-      <ul class="navbar">
-        <li><a href="#">Dom</a></li>
-        <li><a href="#about">O mnie</a></li>
-        <li><a href="#offer">Oferta</a></li>
-        <li><a href="#contact">Kontakt</a></li>
-      </ul>
-    </div>
-    <hr>
+  <div id="global-math-container"></div>
+
+  <nav class="bottom-nav" id="bottom-nav">
+    <a href="#hero" class="active" data-section="hero">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+        stroke-linejoin="round">
+        <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z" />
+        <polyline points="9 22 9 12 15 12 15 22" />
+      </svg>
+      Start
+    </a>
+    <a href="#about" data-section="about">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+        stroke-linejoin="round">
+        <circle cx="12" cy="8" r="5" />
+        <path d="M3 21v-2a7 7 0 0 1 14 0v2" />
+      </svg>
+      O mnie
+    </a>
+    <a href="#offer" data-section="offer">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+        stroke-linejoin="round">
+        <rect x="2" y="3" width="20" height="14" rx="2" />
+        <line x1="8" y1="21" x2="16" y2="21" />
+        <line x1="12" y1="17" x2="12" y2="21" />
+      </svg>
+      Oferta
+    </a>
+    <a href="#pricing" data-section="pricing">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+        stroke-linejoin="round">
+        <line x1="12" y1="1" x2="12" y2="23" />
+        <path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6" />
+      </svg>
+      Cennik
+    </a>
+    <a href="#contact" data-section="contact">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+        stroke-linejoin="round">
+        <path
+          d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.63 3.36 2 2 0 0 1 3.62 1h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 8.91a16 16 0 0 0 6 6l.81-.81a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z" />
+      </svg>
+      Kontakt
+    </a>
   </nav>
 
-  <section class="section">
-    <div class="section__container">
-      <div class="content">
-        <p class="subtitle">Cześć</p>
-        <h1 class="title">
-          Jestem <span>Dawid</span><br />pomogę z<span> matematyką</span>
-        </h1>
+  <section id="hero">
+    <div class="grid-bg"></div>
+    <div class="hero-canvas">
+      <div class="hero-glow-1"></div>
+      <div class="hero-glow-2"></div>
 
-        <div class="social">
-          <div class="up">
-            <a href="https://www.facebook.com/profile.php?id=100014540770507 " target="_blank"><i
-                class="fa-brands fa-facebook"></i></a>
-            <a href="https://www.instagram.com/dawidchrzaszcz/" target="_blank"><i
-                class="fa-brands fa-instagram"></i></a>
+      <div class="scene-3d" style="top: 15%; right: 5%;">
+        <div class="cube">
+          <div class="cube-face cf-front">∑</div>
+          <div class="cube-face cf-back">π</div>
+          <div class="cube-face cf-right">∫</div>
+          <div class="cube-face cf-left">√</div>
+          <div class="cube-face cf-top">Δ</div>
+          <div class="cube-face cf-bottom">∞</div>
+        </div>
+      </div>
 
-            <a href="#contact"><i class="fa-solid fa-phone-volume" style="color: var(--text-light);"></i></a>
-            <a href="https://www.olx.pl/d/oferta/korepetycje-z-matematyki-radzionkow-okolice-CID4371-ID12pMtJ.html"
-              target="_blank">
-              <img src="images/olxx.jpg" alt="olx">
+      <div class="scene-3d-2" style="bottom: 15%; left: 5%;">
+        <div class="tri-spin">
+          <div class="tri-face tf1">f(x)</div>
+          <div class="tri-face tf2">x²</div>
+          <div class="tri-face tf3">≠</div>
+          <div class="tri-face tf4">∀</div>
+          <div class="tri-face tf5">±</div>
+          <div class="tri-face tf6">≤</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="container hero-container">
+      <div class="hero-wrapper">
+
+        <div class="hero-text-side">
+          <div class="hero-eyebrow">
+            <div class="hero-dot"></div>
+            <span>Korepetycje z Matematyki · Radzionków & Online</span>
+          </div>
+
+          <h1 class="hero-h1">
+            Wiedza<br>
+            <span class="line2">Praktyka<br>Sukces</span>
+          </h1>
+
+          <p class="hero-sub">
+            Matematyka to nie schematy do zapamiętania — to język myślenia.
+            Wspólnie nauczymy Cię widzieć strukturę problemu i rozwiązywać
+            go samodzielnie, z pełnym zrozumieniem.
+          </p>
+
+          <div class="hero-ctas">
+            <a href="#contact" class="btn btn-primary">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
+                stroke-linecap="round" stroke-linejoin="round">
+                <path
+                  d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.63 3.36 2 2 0 0 1 3.62 1h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 8.91a16 16 0 0 0 6 6l.81-.81a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z" />
+              </svg>
+              Umów lekcję próbną
+            </a>
+            <a href="#offer" class="btn btn-ghost">
+              Zobacz ofertę →
             </a>
           </div>
         </div>
+
+        <div class="hero-image-side">
+          <div class="profile-frame">
+            <img src="profile.jpg" alt="DC Math - Ekspert Matematyki">
+            <div class="profile-decoration"></div>
+          </div>
+        </div>
+
       </div>
-      <div class="image">
-        <img src="images/photo.jpg" alt="profile" />
+    </div>
+
+    <div class="scroll-indicator">
+      <div class="scroll-mouse">
+        <div class="scroll-mouse-dot"></div>
       </div>
+      <span>Przewiń</span>
     </div>
   </section>
 
-  <section class="call-to-action section-padding">
+  <section id="about">
+    <div class="grid-bg"></div>
+    <div class="scene-3d-6">
+      <div class="cube" style="animation-duration: 25s;">
+        <div class="cube-face cf-front">sin</div>
+        <div class="cube-face cf-back">cos</div>
+        <div class="cube-face cf-right">tg</div>
+        <div class="cube-face cf-left">ctg</div>
+        <div class="cube-face cf-top">sec</div>
+        <div class="cube-face cf-bottom">csc</div>
+      </div>
+    </div>
+
     <div class="container">
-      <div class="row justify-content-center">
-        <div class="call-action-content text-center">
-          <h2 class="action-title">Masz problemy z matematyką?</h2>
-          <p>Jeśli masz problemy z matematyką albo chcesz się lepiej przygotować do egzaminów, to dobrze trafiłeś!</p>
+      <div class="section-header reveal">
+        <span class="tag">// O mnie</span>
+        <h2>Korepetycje<br><span class="gradient-text">z głową</span></h2>
+      </div>
+
+      <div class="about-card reveal">
+        <div style="display:flex; align-items:center; gap:16px; margin-bottom:1.2rem;">
+          <div class="avatar-wrap">🧑‍🏫</div>
+          <div>
+            <strong style="font-size:1.1rem; font-family:var(--font-head); display:block;">DC Math</strong>
+            <span style="font-size:.8rem; color:var(--muted); font-family:var(--font-mono);">Korepetytor
+              Matematyki</span>
+          </div>
+        </div>
+
+        <p style="font-size:.9rem; color:#94a3b8; line-height:1.8; margin-bottom:1rem;">
+          Uczę matematyki inaczej niż na zwykłych korepetycjach. Zamiast
+          mechanicznie powtarzać schematy i wzory, buduję u uczniów
+          <strong style="color:var(--text);">logiczne rozumienie problemu</strong>
+          — umiejętność samodzielnego myślenia, analizy i rozwiązywania zadań
+          z prawdziwym zrozumieniem.
+        </p>
+
+        <p style="font-size:.9rem; color:#94a3b8; line-height:1.8;">
+          Pracuję z uczniami liceów i techników przygotowujących się do
+          <strong style="color:var(--text);">matury podstawowej i rozszerzonej</strong>,
+          nadrabiającymi zaległości oraz tymi, którzy chcą naprawdę polubić matematykę.
+          Każda lekcja jest dopasowana indywidualnie do tempa i potrzeb ucznia.
+        </p>
+
+        <div class="stat-row">
+          <div class="stat-item">
+            <span class="stat-num">100%</span>
+            <span class="stat-lbl">Indywidualne</span>
+          </div>
+          <div class="stat-item">
+            <span class="stat-num">Online<br>+</span>
+            <span class="stat-lbl">Stacjonarnie</span>
+          </div>
+          <div class="stat-item">
+            <span class="stat-num">Matura</span>
+            <span class="stat-lbl">Basic & Rozszerzony</span>
+          </div>
+        </div>
+
+        <div class="badge-row">
+          <span class="badge badge-cyan">Logiczne myślenie</span>
+          <span class="badge badge-violet">Matura rozszerzona</span>
+          <span class="badge badge-pink">Materiały własne</span>
+          <span class="badge badge-pink">Narzędzia interaktywne</span>
+          <span class="badge badge-cyan">Radzionków & okolice</span>
+          <span class="badge badge-violet">Zwięźle i na temat</span>
         </div>
       </div>
     </div>
-    <p id="about"></p>
   </section>
 
+  <section id="offer">
+    <div class="offer-glow"></div>
+    <div class="grid-bg"></div>
 
-  <section class="container_about">
-    <div class="containerrrr">
-      <span class="border br">Dawid Chrząszcz</span>
-
-      <h1>O mnie</h1>
-
-      <p>Spełniam się jako student informatyki na Politechnice Śląskiej, chętnie dzielę się swoją wiedzą, prowadząc
-        korepetycje z matematyki.</p>
-
-      <p>Pasjonują mnie logiczne wyzwania – w wolnym czasie układam puzzle i rozwiązuje
-        łamigłówki, stale rozwijając swoje umiejętności analityczne. Jestem osobą, która lubi zgłębiać złożone problemy
-        i znajdować na nie kreatywne rozwiązania.
-      </p>
+    <div class="scene-3d-3">
+      <div class="cube" style="animation-duration: 20s;">
+        <div class="cube-face cf-front">x</div>
+        <div class="cube-face cf-back">y</div>
+        <div class="cube-face cf-right">z</div>
+        <div class="cube-face cf-left">a</div>
+        <div class="cube-face cf-top">b</div>
+        <div class="cube-face cf-bottom">c</div>
+      </div>
     </div>
-    <p id="offer"></p>
+
+    <div class="scene-3d-8">
+      <div class="cube" style="animation-duration: 17s; animation-direction: reverse;">
+        <div class="cube-face cf-front" style="border-color: rgba(244,114,182,0.3); color: rgba(244,114,182,0.4);">+
+        </div>
+        <div class="cube-face cf-back" style="border-color: rgba(244,114,182,0.3); color: rgba(244,114,182,0.4);">-
+        </div>
+        <div class="cube-face cf-right" style="border-color: rgba(244,114,182,0.3); color: rgba(244,114,182,0.4);">×
+        </div>
+        <div class="cube-face cf-left" style="border-color: rgba(244,114,182,0.3); color: rgba(244,114,182,0.4);">÷
+        </div>
+        <div class="cube-face cf-top" style="border-color: rgba(244,114,182,0.3); color: rgba(244,114,182,0.4);">≈</div>
+        <div class="cube-face cf-bottom" style="border-color: rgba(244,114,182,0.3); color: rgba(244,114,182,0.4);">%
+        </div>
+      </div>
+    </div>
+
+    <div class="container">
+      <div class="section-header reveal">
+        <span class="tag">// Jak pracujemy</span>
+        <h2>Proces<br><span class="gradient-text">Tryb pracy</span></h2>
+      </div>
+
+      <div class="mode-toggle reveal" id="mode-toggle">
+        <div class="mode-toggle-pill" id="toggle-pill"></div>
+        <button class="mode-btn active" data-tab="process" id="btn-process">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+            stroke-linejoin="round">
+            <polyline points="22 12 18 12 15 21 9 3 6 12 2 12" />
+          </svg>
+          Metodologia
+        </button>
+        <button class="mode-btn" data-tab="modes" id="btn-modes">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+            stroke-linejoin="round">
+            <rect x="2" y="3" width="20" height="14" rx="2" />
+            <line x1="8" y1="21" x2="16" y2="21" />
+            <line x1="12" y1="17" x2="12" y2="21" />
+          </svg>
+          Online & Stacjonarnie
+        </button>
+      </div>
+
+      <div class="mode-panels">
+        <div class="mode-panel active" id="panel-process">
+          <div class="process-steps" id="process-steps">
+            <div class="process-line">
+              <div class="process-line-fill" id="line-fill"></div>
+            </div>
+
+            <div class="step-item" data-delay="0">
+              <div class="step-dot">
+                <div class="step-dot-inner"></div>
+              </div>
+              <div class="step-card">
+                <span class="step-num">// 01 — DIAGNOZA</span>
+                <h3>Rozumiemy punkt wyjścia</h3>
+                <p>Zanim zaczniemy, dokładnie sprawdzam, co uczeń już wie, a gdzie są luki. Nie zakładam niczego z góry
+                  — buduję od fundamentów.</p>
+                <div class="step-tags">
+                  <span class="step-tag">Test wstępny</span>
+                  <span class="step-tag">Analiza zaległości</span>
+                  <span class="step-tag violet">Indywidualny plan</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="step-item" data-delay="1">
+              <div class="step-dot">
+                <div class="step-dot-inner"></div>
+              </div>
+              <div class="step-card">
+                <span class="step-num">// 02 — STRUKTURA</span>
+                <h3>Buduję rozumienie, nie schematy</h3>
+                <p>Każdy temat tłumaczę przez logikę — dlaczego coś działa, nie tylko jak. Uczeń sam dochodzi do
+                  rozwiązania, ja tylko prowadzę pytaniami.</p>
+                <div class="step-tags">
+                  <span class="step-tag">Metoda sokratyczna</span>
+                  <span class="step-tag violet">Bez mechanicznego wkuwania</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="step-item" data-delay="2">
+              <div class="step-dot">
+                <div class="step-dot-inner"></div>
+              </div>
+              <div class="step-card">
+                <span class="step-num">// 03 — UTRWALENIE</span>
+                <h3>Ćwiczymy różnorodność zadań</h3>
+                <p>Ten sam koncept w wielu różnych kontekstach — żeby uczeń nie był zaskoczony na egzaminie. Autorskie
+                  materiały do każdej lekcji.</p>
+                <div class="step-tags">
+                  <span class="step-tag">Zadania wielopoziomowe</span>
+                  <span class="step-tag violet">Autorskie PDF-y</span>
+                  <span class="step-tag">Arkusze maturalne</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="step-item" data-delay="3">
+              <div class="step-dot">
+                <div class="step-dot-inner"></div>
+              </div>
+              <div class="step-card">
+                <span class="step-num">// 04 — EGZAMIN</span>
+                <h3>Wchodzimy pewnie na maturę</h3>
+                <p>Symulowane egzaminy, analiza typowych pułapek, zarządzanie czasem. Uczeń zna swoje mocne strony i
+                  wie, jak działać pod presją.</p>
+                <div class="step-tags">
+                  <span class="step-tag">Symulacje egzaminów</span>
+                  <span class="step-tag violet">Techniki czasowe</span>
+                  <span class="step-tag">Arkusze z 10 lat</span>
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+        <div class="mode-panel" id="panel-modes">
+          <div class="mode-detail">
+
+            <div class="mode-detail-card" data-delay="0">
+              <div class="mdc-header">
+                <div class="mdc-icon c">🖥️</div>
+                <div>
+                  <div class="mdc-title">Zajęcia Online</div>
+                  <div class="mdc-sub">Dowolne miejsce · Polska </div>
+                </div>
+              </div>
+              <div class="feature-grid">
+                <div class="feat">
+                  <div class="feat-dot c"></div>Interaktywna tablica cyfrowa
+                </div>
+                <div class="feat">
+                  <div class="feat-dot c"></div>Nagrania z lekcji
+                </div>
+                <div class="feat">
+                  <div class="feat-dot c"></div>Materiały PDF po lekcji
+                </div>
+                <div class="feat">
+                  <div class="feat-dot c"></div>Platforma ćwiczeń online
+                </div>
+                <div class="feat">
+                  <div class="feat-dot c"></div>Kontakt WhatsApp/Messenger
+                </div>
+                <div class="feat">
+                  <div class="feat-dot c"></div>Elastyczne godziny
+                </div>
+              </div>
+            </div>
+
+            <div class="mode-detail-card" data-delay="1">
+              <div class="mdc-header">
+                <div class="mdc-icon v">📍</div>
+                <div>
+                  <div class="mdc-title">Zajęcia Stacjonarne</div>
+                  <div class="mdc-sub">Radzionków i okolice</div>
+                </div>
+              </div>
+              <div class="feature-grid">
+                <div class="feat">
+                  <div class="feat-dot v"></div>Praca na kartce
+                </div>
+                <div class="feat">
+                  <div class="feat-dot v"></div>Materiały drukowane
+                </div>
+                <div class="feat">
+                  <div class="feat-dot v"></div>Skupione środowisko
+                </div>
+                <div class="feat">
+                  <div class="feat-dot v"></div>Po szkole lub weekend
+                </div>
+                <div class="feat">
+                  <div class="feat-dot v"></div>Bezpośredni kontakt
+                </div>
+                <div class="feat">
+                  <div class="feat-dot v"></div>Bytom · Piekary · T-Góry
+                </div>
+              </div>
+              <div class="location-pill">
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                  stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z" />
+                  <circle cx="12" cy="10" r="3" />
+                </svg>
+                Radzionków, woj. śląskie
+              </div>
+            </div>
+
+            <div class="compare-row mode-detail-card" data-delay="2">
+              <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="var(--cyan)" stroke-width="1.5"
+                stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="12" cy="12" r="10" />
+                <line x1="12" y1="8" x2="12" y2="12" />
+                <line x1="12" y1="16" x2="12.01" y2="16" />
+              </svg>
+              <p>Nie wiesz, od czego zacząć? Podczas pierwszej lekcji przeprowadzimy <strong
+                  style="color:var(--cyan);">audyt Twoich umiejętności</strong> — namierzymy luki i ustalimy konkretny
+                plan działania, który najszybciej dowiezie Cię do celu.</p>
+            </div>
+
+          </div>
+        </div>
+      </div>
+
+    </div>
   </section>
 
-  <div class="grid-container">
-    <div class="card">
-      <h2>Indywidualne podejście do każdego ucznia</h2>
-      <p>Każdy uczeń jest inny, dlatego dostosowuję metody nauczania do Twojego tempa, poziomu i stylu nauki, by
-        skutecznie rozwijać Twoje matematyczne umiejętności.</p>
-    </div>
-    <div class="card_light">
-      <h2>Przygotowanie do egzaminów</h2>
-      <p>Pomogę w przygotowaniu do egzaminów ósmoklasisty, matury i bieżących sprawdzianów. Zwiększ swoje szanse na
-        sukces dzięki solidnej i efektywnej nauce.</p>
-    </div>
-    <div class="card">
-      <h2>Wyjaśnianie trudnych zagadnień w przystępny sposób</h2>
-      <p>Nawet najtrudniejsze tematy matematyczne stają się proste, gdy tłumaczy się je w sposób przejrzysty i
-        zrozumiały. Pomogę Ci przełamać bariery i zrozumieć każdy temat.</p>
-    </div>
-    <div class="card_light">
-      <h2>Dojazd do ucznia na terenie Radzionkowa oraz okolic</h2>
-      <p>Oferuję wygodę nauki w domowym zaciszu – dojeżdżam do uczniów na terenie miasta. Dzięki temu zaoszczędzisz czas
-        na dojazd, a lekcje odbędą się w miejscu, które znasz i w którym czujesz się komfortowo.</p>
-    </div>
-    <div class="card">
-      <h2>Matematyka na wszystkich poziomach nauczania</h2>
-      <p>Udzielam korepetycje zarówno dla uczniów szkoły podstawowej, jak i średniej, dostosowując materiały do Twojego
-        poziomu. Razem osiągniemy Twoje cele edukacyjne!</p>
-    </div>
-    <div class="card_light">
-      <h2>Elastyczne godziny zajęć dostosowane do Twoich potrzeb</h2>
-      <p>Masz napięty grafik? Dostosuję godziny zajęć do Twojej dostępności, aby nauka była wygodna i możliwa nawet przy
-        pełnym planie dnia.</p>
-    </div>
-  </div>
+  <section id="materials">
+    <div class="grid-bg"></div>
+    <div class="materials-glow"></div>
 
-  <div class="social">
-    <div class="down">
-      <a href="https://www.facebook.com/profile.php?id=100014540770507 " target="_blank"><i
-          class="fa-brands fa-facebook"></i></a>
-      <a href="https://www.instagram.com/dawidchrzaszcz/" target="_blank"><i class="fa-brands fa-instagram"></i></a>
-      <!--<a href="https://github.com/Silennnt" target="_blank"><i class="fa-brands fa-github"></i></a>-->
-      <a href="https://www.olx.pl/d/oferta/korepetycje-z-matematyki-radzionkow-okolice-CID4371-ID12pMtJ.html"
-        target="blank">
-        <img src="images/olxx.jpg" alt="olx">
-      </a>
+    <div class="scene-3d-7">
+      <div class="tri-spin" style="animation-duration: 22s; animation-direction: reverse;">
+        <div class="tri-face tf1"
+          style="border-color: rgba(0,229,255,0.3); color: rgba(0,229,255,0.4); background: rgba(0,229,255,0.04);">E
+        </div>
+        <div class="tri-face tf2"
+          style="border-color: rgba(0,229,255,0.3); color: rgba(0,229,255,0.4); background: rgba(0,229,255,0.04);">m
+        </div>
+        <div class="tri-face tf3"
+          style="border-color: rgba(0,229,255,0.3); color: rgba(0,229,255,0.4); background: rgba(0,229,255,0.04);">c²
+        </div>
+        <div class="tri-face tf4"
+          style="border-color: rgba(0,229,255,0.3); color: rgba(0,229,255,0.4); background: rgba(0,229,255,0.04);">G
+        </div>
+        <div class="tri-face tf5"
+          style="border-color: rgba(0,229,255,0.3); color: rgba(0,229,255,0.4); background: rgba(0,229,255,0.04);">h
+        </div>
+        <div class="tri-face tf6"
+          style="border-color: rgba(0,229,255,0.3); color: rgba(0,229,255,0.4); background: rgba(0,229,255,0.04);">v
+        </div>
+      </div>
     </div>
-    <div class="down" id="contact">
-      <a href="mailto:dawidchrzaszcz64@gmail.com">
-        <p>dawidchrzaszcz64@gmail.com</p>
-      </a>
-    </div>
-    <div class="downn">
-      <a href="tel:+48517431322">
-        <p>+48 517 431 322</p>
-      </a>
-    </div>
-  </div>
 
+    <div class="container">
+      <div class="section-header reveal">
+        <span class="tag">// Hardcorowy trening</span>
+        <h2>Matematyczny<br><span class="gradient-text">poligon</span></h2>
+      </div>
+
+      <div class="material-card reveal">
+        <h3>📄 Autorski Arkusz Maturalny rozszerzenie</h3>
+        <p>
+          Pobierz mój autorski arkusz, który sprawi, że Twój mózg wejdzie na wyższe obroty.
+          Zasady są proste: <strong style="color:var(--text);">nie ma odpowiedzi, nie ma omówienia, nie ma
+            litości.</strong>
+          Tylko Ty i zadania, które lubią kosić na maturze. Sprawdź, czy dasz radę,
+          zanim arkusz sprawdzi Ciebie.
+        </p>
+
+        <div class="pdf-preview">
+          <div class="pdf-icon">📕</div>
+          <div class="pdf-meta">
+            <strong>Arkusz Maturalny – Rozszerzenie</strong>
+            <span>DC Math · Plik PDF · ~2 MB · 24 strony</span>
+          </div>
+        </div>
+
+        <button class="btn btn-violet" id="download-btn" style="width:100%;" onclick="simulateDownload(this)">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
+            stroke-linecap="round" stroke-linejoin="round">
+            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
+            <polyline points="7 10 12 15 17 10" />
+            <line x1="12" y1="15" x2="12" y2="3" />
+          </svg>
+          <span id="download-text">Biorę to na klatę (Pobierz PDF)</span>
+        </button>
+
+        <p
+          style="font-size:.75rem; color:var(--muted); margin-top:.8rem; text-align:center; font-family:var(--font-mono);">
+          Płacz nad błędami i radosne świętowanie sukcesów – tylko na moich lekcjach.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section id="pricing">
+    <div class="grid-bg"></div>
+
+    <div class="scene-3d-4">
+      <div class="tri-spin" style="animation-duration: 18s; animation-direction: reverse;">
+        <div class="tri-face tf1"
+          style="border-color: rgba(244,114,182,0.3); color: rgba(244,114,182,0.4); background: rgba(244,114,182,0.04);">
+          α</div>
+        <div class="tri-face tf2"
+          style="border-color: rgba(244,114,182,0.3); color: rgba(244,114,182,0.4); background: rgba(244,114,182,0.04);">
+          β</div>
+        <div class="tri-face tf3"
+          style="border-color: rgba(244,114,182,0.3); color: rgba(244,114,182,0.4); background: rgba(244,114,182,0.04);">
+          γ</div>
+        <div class="tri-face tf4"
+          style="border-color: rgba(244,114,182,0.3); color: rgba(244,114,182,0.4); background: rgba(244,114,182,0.04);">
+          θ</div>
+        <div class="tri-face tf5"
+          style="border-color: rgba(244,114,182,0.3); color: rgba(244,114,182,0.4); background: rgba(244,114,182,0.04);">
+          φ</div>
+        <div class="tri-face tf6"
+          style="border-color: rgba(244,114,182,0.3); color: rgba(244,114,182,0.4); background: rgba(244,114,182,0.04);">
+          ω</div>
+      </div>
+    </div>
+
+    <div class="container">
+      <div class="section-header reveal">
+        <span class="tag">// Cennik</span>
+        <h2>Przejrzyste<br><span class="gradient-text">pakiety</span></h2>
+        <p style="color:#94a3b8; font-size:.88rem; margin-top:.5rem;">
+          Cena za godzinę lekcyjną (60 min).
+        </p>
+      </div>
+
+      <div class="pricing-cards">
+        <div class="price-card reveal">
+          <div class="price-tier">Matura Podstawowa</div>
+          <h3>Matematyka Podstawowa</h3>
+          <p class="desc">Dla uczniów liceum i technikum przygotowujących się do matury podstawowej.</p>
+          <div class="price-wrapper">
+            <span class="price-old">90 PLN</span>
+            <div class="price-amount" style="margin-bottom: 0;">
+              <span class="price-big">70</span>
+              <span class="price-small">PLN / 60 min</span>
+            </div>
+            <div>
+              <span class="promo-badge">LIMITOWANA OFERTA: -20 PLN</span>
+            </div>
+          </div>
+          <ul class="price-features">
+            <li><span class="check">✓</span> Materiały do każdej lekcji</li>
+            <li><span class="check">✓</span> Online lub stacjonarnie</li>
+            <li><span class="check">✓</span> Kontakt między lekcjami</li>
+            <li><span class="check">✓</span> Skupienie na pewniakach</li>
+            <li><span class="check">✓</span> Budowanie pewności siebie</li>
+          </ul>
+        </div>
+
+        <div class="price-card featured reveal">
+          <div class="price-tier">Najchętniej wybierany</div>
+          <h3>Wsparcie Taktyczne</h3>
+          <p class="desc">Codzienna pomoc dla liceum i technikum. Ogarniamy materiał bieżący, żebyś Ty nie musiał.</p>
+          <div class="price-wrapper">
+            <span class="price-old">90 PLN</span>
+            <div class="price-amount" style="margin-bottom: 0;">
+              <span class="price-big">70</span>
+              <span class="price-small">PLN / 60 min</span>
+            </div>
+            <div>
+              <span class="promo-badge">OFERTA LIMITOWANA: -20 PLN</span>
+            </div>
+          </div>
+          <ul class="price-features">
+            <li><span class="check">✓</span> Bieżąca pacyfikacja kartkówek</li>
+            <li><span class="check">✓</span> Strategia pod sprawdziany</li>
+            <li><span class="check">✓</span> Nadrabianie zaległości w locie</li>
+            <li><span class="check">✓</span> Metody na trudnych nauczycieli</li>
+            <li><span class="check">✓</span> Elastyczne terminy "na już"</li>
+          </ul>
+        </div>
+
+        <div class="price-card reveal">
+          <div class="price-tier">Matura Rozszerzona</div>
+          <h3>Matematyka Rozszerzona</h3>
+          <p class="desc">Intensywne przygotowanie do matury rozszerzonej. Autorskie arkusze i brak litości.</p>
+          <div class="price-wrapper">
+            <span class="price-old">100 PLN</span>
+            <div class="price-amount" style="margin-bottom: 0;">
+              <span class="price-big">80</span>
+              <span class="price-small">PLN / 60 min</span>
+            </div>
+            <div>
+              <span class="promo-badge">LIMITOWANA OFERTA: -20 PLN</span>
+            </div>
+          </div>
+          <ul class="price-features">
+            <li><span class="check">✓</span> Autorski arkusz maturalny PDF</li>
+            <li><span class="check">✓</span> Analiza arkuszy CKE i innych</li>
+            <li><span class="check">✓</span> Symulowane egzaminy</li>
+            <li><span class="check">✓</span> Personalizowane plany nauki</li>
+            <li><span class="check">✓</span> Priorytetowy kontakt</li>
+          </ul>
+        </div>
+
+      </div>
+
+      <div style="margin-top:1.5rem; text-align:center;" class="reveal">
+        <p style="font-size:.82rem; color:var(--muted); font-family:var(--font-mono);">
+          Pakiety wielolekcyjne – rabat do negocjacji.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section id="contact">
+    <div class="grid-bg"></div>
+
+    <div class="scene-3d-5">
+      <div class="cube" style="animation-duration: 15s; animation-direction: reverse;">
+        <div class="cube-face cf-front"
+          style="border-color: rgba(168,85,247,0.3); color: rgba(168,85,247,0.4); background: rgba(168,85,247,0.04);">
+          lim</div>
+        <div class="cube-face cf-back"
+          style="border-color: rgba(168,85,247,0.3); color: rgba(168,85,247,0.4); background: rgba(168,85,247,0.04);">dx
+        </div>
+        <div class="cube-face cf-right"
+          style="border-color: rgba(168,85,247,0.3); color: rgba(168,85,247,0.4); background: rgba(168,85,247,0.04);">dy
+        </div>
+        <div class="cube-face cf-left"
+          style="border-color: rgba(168,85,247,0.3); color: rgba(168,85,247,0.4); background: rgba(168,85,247,0.04);">dt
+        </div>
+        <div class="cube-face cf-top"
+          style="border-color: rgba(168,85,247,0.3); color: rgba(168,85,247,0.4); background: rgba(168,85,247,0.04);">dz
+        </div>
+        <div class="cube-face cf-bottom"
+          style="border-color: rgba(168,85,247,0.3); color: rgba(168,85,247,0.4); background: rgba(168,85,247,0.04);">ds
+        </div>
+      </div>
+    </div>
+
+    <div class="container">
+      <div class="section-header reveal">
+        <span class="tag">// Kontakt</span>
+        <h2>Zacznijmy<br><span class="gradient-text">współpracę</span></h2>
+      </div>
+
+      <div class="contact-card reveal">
+        <div class="contact-header">
+          <h3>Napisz lub zadzwoń</h3>
+          <p>Odpowiadam zazwyczaj w ciągu kilku godzin.</p>
+        </div>
+
+        <div class="contact-actions">
+          <a href="tel:+48510000022" class="contact-btn">
+            <div class="contact-btn-icon ci-green">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#22c55e" stroke-width="2"
+                stroke-linecap="round" stroke-linejoin="round">
+                <path
+                  d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.63 3.36 2 2 0 0 1 3.62 1h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 8.91a16 16 0 0 0 6 6l.81-.81a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z" />
+              </svg>
+            </div>
+            <div class="contact-btn-meta">
+              <strong>Zadzwoń teraz</strong>
+              <span>+48 517 431 322</span>
+            </div>
+            <svg class="contact-btn-arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+              stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <polyline points="9 18 15 12 9 6" />
+            </svg>
+          </a>
+
+          <a href="sms:+48517431322?body=Cześć, chciałbym/chciałabym umówić się na lekcję próbną z matematyki."
+            class="contact-btn">
+            <div class="contact-btn-icon ci-cyan">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--cyan)" stroke-width="2"
+                stroke-linecap="round" stroke-linejoin="round">
+                <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z" />
+              </svg>
+            </div>
+            <div class="contact-btn-meta">
+              <strong>Wyślij SMS</strong>
+              <span>Zapytaj o termin</span>
+            </div>
+            <svg class="contact-btn-arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+              stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <polyline points="9 18 15 12 9 6" />
+            </svg>
+          </a>
+
+          <a href="mailto:dawidchrzaszcz64@gmail.com?subject=Korepetycje - lekcja próbna&body=Cześć! Chciałbym/chciałabym umówić się na lekcję próbną. Proszę o kontakt."
+            class="contact-btn">
+            <div class="contact-btn-icon ci-orange">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#fb923c" stroke-width="2"
+                stroke-linecap="round" stroke-linejoin="round">
+                <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" />
+                <polyline points="22,6 12,13 2,6" />
+              </svg>
+            </div>
+            <div class="contact-btn-meta">
+              <strong>Wyślij e-mail</strong>
+              <span>dawidchrzaszcz64@gmail.com</span>
+            </div>
+            <svg class="contact-btn-arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+              stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <polyline points="9 18 15 12 9 6" />
+            </svg>
+          </a>
+
+          <a href="https://www.olx.pl/d/oferta/korepetycje-z-matematyki-matura-liceum-i-technikum-dcmath-pl-radzionkow-cala-polska-CID4371-ID1aEgVI.html?bs=olx_pro_listing"
+            target="_blank" rel="noopener" class="contact-btn">
+            <div class="contact-btn-icon" style="background:rgba(79,209,197,.1); border:1px solid rgba(79,209,197,.3);">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#4fd1c5" stroke-width="2"
+                stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="18" cy="5" r="3" />
+                <circle cx="6" cy="12" r="3" />
+                <circle cx="18" cy="19" r="3" />
+                <line x1="8.59" y1="13.51" x2="15.42" y2="17.49" />
+                <line x1="15.41" y1="6.51" x2="8.59" y2="10.49" />
+              </svg>
+            </div>
+            <div class="contact-btn-meta">
+              <strong>Ogłoszenie OLX</strong>
+              <span>Wyślij wiadomość na OLX</span>
+            </div>
+            <svg class="contact-btn-arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+              stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <polyline points="9 18 15 12 9 6" />
+            </svg>
+          </a>
+        </div>
+
+        <div class="info-row">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+            stroke-linecap="round" stroke-linejoin="round">
+            <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z" />
+            <circle cx="12" cy="10" r="3" />
+          </svg>
+          Stacjonarnie: Radzionków i okolice · Online: cała Polska
+        </div>
+      </div>
+
+      <div style="margin-top:1.5rem;" class="reveal">
+        <a href="#hero" class="btn btn-primary" style="width:100%;">
+          ↑ Wróć na górę
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="logo-f gradient-text">DC Math</div>
+    <p>© 2026 DC Math · Korepetycje z matematyki · Radzionków & Online</p>
+    <p style="margin-top:.4rem;"><a href="https://dcmath.pl"
+        style="color:var(--muted); text-decoration:none;">dcmath.pl</a></p>
+  </footer>
+
+  <script>
+    /* -----------------------------------------------------------
+       1. GLOBAL FLOATING MATH FORMULAS
+       ----------------------------------------------------------- */
+    const formulas = [
+      'E = mc²', 'a² + b² = c²', 'sin²(α) + cos²(α) = 1',
+      '∫ f(x) dx', 'lim_{x→∞} (1+1/x)ˣ = e', 'Δ = b² - 4ac',
+      'e^(iπ) + 1 = 0', "f'(x) = nxⁿ⁻¹", 'V = 4/3πr³',
+      'P(A|B) = P(B|A)P(A)/P(B)', '∑ 1/n² = π²/6', 'log(xy) = log(x) + log(y)',
+      '∇ × E = -∂B/∂t', 'A = πr²', 'x = (-b ± √Δ) / 2a', 'F = G(m₁m₂)/r²',
+      'x² + y² = r²'
+    ];
+    const mathContainer = document.getElementById('global-math-container');
+    const formulaCount = 40;
+
+    for (let i = 0; i < formulaCount; i++) {
+      const el = document.createElement('div');
+      el.className = 'math-float';
+      el.textContent = formulas[Math.floor(Math.random() * formulas.length)];
+
+      const x = Math.random() * 100;
+      const dur = 20 + Math.random() * 40;
+      const delay = -(Math.random() * dur);
+      const size = 0.8 + Math.random() * 1.5;
+      const opacity = 0.05 + Math.random() * 0.15;
+
+      el.style.left = `${x}vw`;
+      el.style.animationDuration = `${dur}s`;
+      el.style.animationDelay = `${delay}s`;
+      el.style.fontSize = `${size}rem`;
+      el.style.setProperty('--base-opacity', opacity);
+
+      mathContainer.appendChild(el);
+    }
+
+    /* -----------------------------------------------------------
+       2. PARALLAX / TILT
+       ----------------------------------------------------------- */
+    const cubes = document.querySelectorAll('.cube');
+    const triSpins = document.querySelectorAll('.tri-spin');
+    let tiltX = 0, tiltY = 0, rAF = null;
+
+    function applyTilt() {
+      cubes.forEach(cube => {
+        cube.style.transform = `rotateX(${20 + tiltX}deg) rotateY(${tiltY}deg)`;
+      });
+      triSpins.forEach(tri => {
+        tri.style.transform = `rotateX(${35 - tiltX * .5}deg) rotateY(${-tiltY}deg)`;
+      });
+    }
+
+    document.addEventListener('mousemove', (e) => {
+      const cx = window.innerWidth / 2, cy = window.innerHeight / 2;
+      tiltX = (e.clientY - cy) / cy * 15; tiltY = (e.clientX - cx) / cx * 20;
+      if (!rAF) rAF = requestAnimationFrame(() => { applyTilt(); rAF = null; });
+    });
+    document.addEventListener('touchmove', (e) => {
+      if (!e.touches[0]) return;
+      const cx = window.innerWidth / 2, cy = window.innerHeight / 2;
+      tiltX = (e.touches[0].clientY - cy) / cy * 12; tiltY = (e.touches[0].clientX - cx) / cx * 15;
+      if (!rAF) rAF = requestAnimationFrame(() => { applyTilt(); rAF = null; });
+    }, { passive: true });
+
+    /* -----------------------------------------------------------
+       3. BASIC SCROLL REVEAL
+       ----------------------------------------------------------- */
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach(e => {
+        if (e.isIntersecting) { e.target.classList.add('visible'); io.unobserve(e.target); }
+      });
+    }, { threshold: .1 });
+    document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+
+    /* -----------------------------------------------------------
+       4. BOTTOM NAV ACTIVE
+       ----------------------------------------------------------- */
+    const navLinks = document.querySelectorAll('.bottom-nav a');
+    const sio = new IntersectionObserver((entries) => {
+      entries.forEach(e => {
+        if (e.isIntersecting) {
+          const id = e.target.id;
+          navLinks.forEach(a => a.classList.toggle('active', a.dataset.section === id));
+        }
+      });
+    }, { threshold: .3, rootMargin: '0px 0px -40% 0px' });
+    document.querySelectorAll('section[id]').forEach(s => sio.observe(s));
+
+    /* -----------------------------------------------------------
+       5. SCROLL-DRIVEN: TIMELINE STEPS
+       ----------------------------------------------------------- */
+    const stepItems = document.querySelectorAll('.step-item');
+    const stepIO = new IntersectionObserver((entries) => {
+      entries.forEach(e => {
+        if (e.isIntersecting) {
+          const delay = parseInt(e.target.dataset.delay || 0) * 140;
+          setTimeout(() => e.target.classList.add('in-view'), delay);
+          stepIO.unobserve(e.target);
+        }
+      });
+    }, { threshold: .2, rootMargin: '0px 0px -5% 0px' });
+    stepItems.forEach(el => stepIO.observe(el));
+
+    const lineFill = document.getElementById('line-fill');
+    const processSteps = document.getElementById('process-steps');
+    function updateLine() {
+      if (!lineFill || !processSteps) return;
+      const rect = processSteps.getBoundingClientRect();
+      const total = rect.height;
+      const visible = Math.max(0, Math.min(total, window.innerHeight - rect.top - 40));
+      lineFill.style.height = Math.min(100, (visible / total) * 120) + '%';
+    }
+    window.addEventListener('scroll', updateLine, { passive: true });
+    updateLine();
+
+    /* -----------------------------------------------------------
+       6. SCROLL-DRIVEN: MODE DETAIL CARDS
+       ----------------------------------------------------------- */
+    const mdcIO = new IntersectionObserver((entries) => {
+      entries.forEach(e => {
+        if (e.isIntersecting) {
+          const delay = parseInt(e.target.dataset.delay || 0) * 100;
+          setTimeout(() => e.target.classList.add('in-view'), delay);
+          mdcIO.unobserve(e.target);
+        }
+      });
+    }, { threshold: .15 });
+    document.querySelectorAll('.mode-detail-card').forEach(el => mdcIO.observe(el));
+
+    /* -----------------------------------------------------------
+       7. SCROLL-DRIVEN: ABOUT
+       ----------------------------------------------------------- */
+    const aboutIO = new IntersectionObserver((entries) => {
+      entries.forEach(e => {
+        if (!e.isIntersecting) return;
+        document.querySelectorAll('#about .stat-item').forEach((el, i) => {
+          setTimeout(() => el.classList.add('vis'), 200 + i * 100);
+        });
+        document.querySelectorAll('#about .badge').forEach((el, i) => {
+          setTimeout(() => el.classList.add('vis'), 450 + i * 60);
+        });
+        aboutIO.unobserve(e.target);
+      });
+    }, { threshold: .2 });
+    const aboutCard = document.querySelector('.about-card');
+    if (aboutCard) aboutIO.observe(aboutCard);
+
+    /* -----------------------------------------------------------
+       8. SCROLL-DRIVEN: PRICING
+       ----------------------------------------------------------- */
+    const pricingIO = new IntersectionObserver((entries) => {
+      entries.forEach(e => {
+        if (!e.isIntersecting) return;
+        document.querySelectorAll('.price-card').forEach((el, i) => {
+          setTimeout(() => el.classList.add('visible'), i * 120);
+        });
+        pricingIO.unobserve(e.target);
+      });
+    }, { threshold: .1 });
+    const pricingSection = document.getElementById('pricing');
+    if (pricingSection) pricingIO.observe(pricingSection);
+
+    /* -----------------------------------------------------------
+       9. SCROLL-DRIVEN: CONTACT BUTTONS
+       ----------------------------------------------------------- */
+    const contactIO = new IntersectionObserver((entries) => {
+      entries.forEach(e => {
+        if (!e.isIntersecting) return;
+        document.querySelectorAll('.contact-btn').forEach((el, i) => {
+          setTimeout(() => el.classList.add('vis'), i * 90);
+        });
+        contactIO.unobserve(e.target);
+      });
+    }, { threshold: .15 });
+    const contactCard = document.querySelector('.contact-card');
+    if (contactCard) contactIO.observe(contactCard);
+
+    /* -----------------------------------------------------------
+      10. SCROLL-DRIVEN: MATERIAL CARD
+       ----------------------------------------------------------- */
+    const matIO = new IntersectionObserver((entries) => {
+      entries.forEach(e => {
+        if (!e.isIntersecting) return;
+        setTimeout(() => e.target.classList.add('shimmer'), 400);
+        matIO.unobserve(e.target);
+      });
+    }, { threshold: .3 });
+    const matCard = document.querySelector('.material-card');
+    if (matCard) matIO.observe(matCard);
+
+    /* -----------------------------------------------------------
+      11. OFFER MODE TOGGLE
+       ----------------------------------------------------------- */
+    /* -----------------------------------------------------------
+       11. OFFER MODE TOGGLE (Z dynamiczną wysokością)
+       ----------------------------------------------------------- */
+    const pill = document.getElementById('toggle-pill');
+    const btns = document.querySelectorAll('.mode-btn');
+    const panels = document.querySelectorAll('.mode-panel');
+    const modePanelsContainer = document.querySelector('.mode-panels');
+
+    function updatePill(activeBtn) {
+      const wrap = document.getElementById('mode-toggle');
+      const wRect = wrap.getBoundingClientRect();
+      const bRect = activeBtn.getBoundingClientRect();
+      pill.style.width = bRect.width + 'px';
+      pill.style.transform = `translateX(${bRect.left - wRect.left - 4}px)`;
+    }
+
+    function updatePanelHeight() {
+      const activePanel = document.querySelector('.mode-panel.active');
+      if (activePanel && modePanelsContainer) {
+        modePanelsContainer.style.height = activePanel.offsetHeight + 'px';
+      }
+    }
+
+    btns.forEach(btn => {
+      btn.addEventListener('click', () => {
+        btns.forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        updatePill(btn);
+
+        const tab = btn.dataset.tab;
+        panels.forEach(p => {
+          if (p.id === 'panel-' + tab) {
+            p.classList.add('active');
+          } else {
+            p.classList.remove('active');
+          }
+        });
+
+        if (tab === 'modes') {
+          document.querySelectorAll('.mode-detail-card').forEach((el, i) => {
+            el.classList.remove('in-view');
+            setTimeout(() => el.classList.add('in-view'), i * 100 + 50);
+          });
+        }
+
+        // Opóźnienie pozwala przeglądarce zaaplikować klasę przed przeliczeniem wysokości
+        setTimeout(updatePanelHeight, 10);
+      });
+    });
+
+    // Inicjalizacja przy ładowaniu strony
+    window.addEventListener('load', () => {
+      setTimeout(updatePanelHeight, 100);
+    });
+
+    requestAnimationFrame(() => {
+      const activeBtn = document.querySelector('.mode-btn.active');
+      if (activeBtn) updatePill(activeBtn);
+    });
+
+    window.addEventListener('resize', () => {
+      const activeBtn = document.querySelector('.mode-btn.active');
+      if (activeBtn) updatePill(activeBtn);
+      updatePanelHeight();
+    });
+
+    /* -----------------------------------------------------------
+      12. SMOOTH SCROLL + HAPTIC
+       ----------------------------------------------------------- */
+    document.querySelectorAll('a[href^="#"]').forEach(a => {
+      a.addEventListener('click', e => {
+        const target = document.querySelector(a.getAttribute('href'));
+        if (!target) return;
+        e.preventDefault();
+        if (navigator.vibrate) navigator.vibrate(10);
+        target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      });
+    });
+
+    /* -----------------------------------------------------------
+      13. DOWNLOAD SIMULATION
+       ----------------------------------------------------------- */
+    function simulateDownload(btn) {
+      const txt = document.getElementById('download-text');
+      btn.disabled = true;
+      const states = [
+        { t: 0, label: '⬇ Pobieranie... 0%' },
+        { t: 400, label: '⬇ Pobieranie... 35%' },
+        { t: 900, label: '⬇ Pobieranie... 72%' },
+        { t: 1400, label: '⬇ Pobieranie... 98%' },
+        { t: 1800, label: '✓ Pobrano! Sprawdź Pobrane' },
+      ];
+      states.forEach(s => setTimeout(() => { txt.textContent = s.label; }, s.t));
+      setTimeout(() => { btn.disabled = false; txt.textContent = 'Pobierz bezpłatnie PDF'; }, 3200);
+    }
+  </script>
 
 </body>
 
