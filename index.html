@@ -2914,9 +2914,7 @@
     const matCard = document.querySelector('.material-card');
     if (matCard) matIO.observe(matCard);
 
-    /* -----------------------------------------------------------
-      11. OFFER MODE TOGGLE
-       ----------------------------------------------------------- */
+
     /* -----------------------------------------------------------
        11. OFFER MODE TOGGLE (Z dynamiczną wysokością)
        ----------------------------------------------------------- */
@@ -2999,7 +2997,7 @@
     /* -----------------------------------------------------------
       13. DOWNLOAD SIMULATION
        ----------------------------------------------------------- */
-    function simulateDownload(btn) {
+     function simulateDownload(btn) {
       const txt = document.getElementById('download-text');
       btn.disabled = true;
       const states = [
@@ -3009,8 +3007,23 @@
         { t: 1400, label: '⬇ Pobieranie... 98%' },
         { t: 1800, label: '✓ Pobrano! Sprawdź Pobrane' },
       ];
+
       states.forEach(s => setTimeout(() => { txt.textContent = s.label; }, s.t));
-      setTimeout(() => { btn.disabled = false; txt.textContent = 'Pobierz bezpłatnie PDF'; }, 3200);
+
+      setTimeout(() => {
+        btn.disabled = false;
+        txt.textContent = 'Biorę to na klatę (Pobierz PDF)';
+
+        // Poniższy kod odpowiada za faktyczne pobranie pliku
+        const link = document.createElement('a');
+        // Ścieżka do pliku na serwerze - musi być zgodna z nazwą wgranego pliku
+        link.href = 'arkusz.pdf';
+        // Nazwa, pod którą plik zapisze się na dysku użytkownika
+        link.download = 'Matura_Rozszerzenie_DCMath.pdf';
+        document.body.appendChild(link);
+        link.click();
+        document.body.removeChild(link);
+      }, 3200);
     }
   </script>
 
